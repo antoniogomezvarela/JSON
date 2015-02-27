@@ -27,10 +27,50 @@ elif opcion == "2":
 			print "Puntos en contra: ",i["points_against"]
 			print "Diferencia: ",i["point_differential"]
 elif opcion == "3":
-	print ""
+	equipos = []
+	ganados = []
+	
+	for x in documento["standing"]:
+		equipos.append(x["first_name"])
+		ganados.append(x["won"])
+		if len(equipos) == 10:
+			break
+	print equipos
+
+	for i in documento["standing"]:
+		contador = 0
+		for x in ganados[::-1]:
+			if x < i["won"]:
+				ganados[contador] = i["won"]
+				equipos[contador] = i["first_name"]
+				contador += 1
+				break
+
+	print equipos
+	print ganados
+
+
 elif opcion == "4":
 	print ""
 elif opcion == "5":
-	print ""
+	c = []
+	e = []
+	w = []
+	for i in documento["standing"]:
+		if i["division"] == "C":
+			c.append(i["first_name"])
+		elif i["division"] == "E":
+			e.append(i["first_name"])
+		elif i["division"] == "W":
+			w.append(i["first_name"])
+	print "División C"
+	for i in c:
+		print i
+	print "División E"
+	for i in e:
+		print i
+	print "División W"
+	for i in w:
+		print i
 else:
 	print "El número que has elegido no es una opción correcta"
