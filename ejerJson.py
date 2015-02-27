@@ -49,7 +49,25 @@ elif opcion == "3":
 	
 
 elif opcion == "4":
+	equipos = []
+	ganados = []
 	
+	for x in documento["standing"]:
+		equipos.append(x["first_name"])
+		ganados.append(x["won"])
+	
+	for i in range(10):
+		victorias = min(ganados)
+		contador = 0
+		for x in ganados:
+			if x == victorias:
+				print equipos[contador],"",
+				print ganados[contador]
+				ganados[contador] = 1000
+				equipos[contador] = ""
+				break
+			else:
+				contador += 1
 elif opcion == "5":
 	c = []
 	e = []
