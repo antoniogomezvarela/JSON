@@ -33,25 +33,23 @@ elif opcion == "3":
 	for x in documento["standing"]:
 		equipos.append(x["first_name"])
 		ganados.append(x["won"])
-		if len(equipos) == 10:
-			break
-	print equipos
-
-	for i in documento["standing"]:
+	
+	for i in range(10):
+		victorias = max(ganados)
 		contador = 0
-		for x in ganados[::-1]:
-			if x < i["won"]:
-				ganados[contador] = i["won"]
-				equipos[contador] = i["first_name"]
-				contador += 1
+		for x in ganados:
+			if x == victorias:
+				print equipos[contador],"",
+				print ganados[contador]
+				ganados[contador] = 0
+				equipos[contador] = ""
 				break
-
-	print equipos
-	print ganados
-
+			else:
+				contador += 1
+	
 
 elif opcion == "4":
-	print ""
+	
 elif opcion == "5":
 	c = []
 	e = []
